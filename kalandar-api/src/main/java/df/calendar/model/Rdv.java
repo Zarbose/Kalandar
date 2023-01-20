@@ -1,11 +1,18 @@
 package df.calendar.model;
 
+import com.owlike.genson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class Rdv {
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("desc")
     private String desc;
-    private Date startDate, endDate;
+    @JsonProperty("startDate")
+    private Date startDate;
+    @JsonProperty("endDate")
+    private Date endDate;
 
     public Rdv() {
         super();
