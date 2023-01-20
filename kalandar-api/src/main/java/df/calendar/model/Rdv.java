@@ -41,7 +41,7 @@ public class Rdv {
         return endDate;
     }
 
-    public void printRdv(){
-        System.out.println("id = "+this.id+" desc = "+this.desc);
+    public String toString(){
+        return "id = " + this.id + " desc = " + this.desc;
     }
 }
