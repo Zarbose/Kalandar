@@ -3,11 +3,19 @@ package df.calendar.model;
 import java.util.Date;
 
 public class Rdv {
-    private Integer id;
+    private String id;
     private String title, desc;
     private Date startDate, endDate;
 
-    public Rdv(Integer id, String title, String desc, Date startDate, Date endDate) {
+    public Rdv() {
+        super();
+        this.id=null;
+        this.title=null;
+        this.desc=null;
+        this.startDate=null;
+        this.endDate=null;
+    }
+    public Rdv(String id, String title, String desc, Date startDate, Date endDate) {
         this.id=id;
         this.title=title;
         this.desc=desc;
@@ -15,7 +23,7 @@ public class Rdv {
         this.endDate=endDate;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
     public String getTitle() {

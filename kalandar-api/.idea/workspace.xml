@@ -46,13 +46,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/RESTProphete",
+    "last_opened_file_path": "C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/Kalandar/kalandar-api/src/main/webapp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\simon\Documents\Scolaire\MASTER\M1\Cours\ArchiSi\Kalandar\kalandar-api\src\main\webapp" />
+    </key>
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.71">
     <configuration name="Tomcat 9.0.67" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.67" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -247,7 +252,7 @@
       <workItem from="1673877747494" duration="1304000" />
       <workItem from="1673879057652" duration="2001000" />
       <workItem from="1674070740046" duration="839000" />
-      <workItem from="1674139839212" duration="1736000" />
+      <workItem from="1674139839212" duration="4822000" />
     </task>
     <servers />
   </component>
