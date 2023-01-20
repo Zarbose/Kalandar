@@ -38,7 +38,9 @@ public class RdvRessource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response putRdvJson(@PathParam("id") String id, final Rdv rdv) {
+    public Response putRdvJson(@PathParam("id") String id, final Rdv
+            rdv) {
+        rdv.printRdv();
         if(DaoRdv.instance.getRdvs().containsKey(rdv.getId())) {
             DaoRdv.instance.getRdvs().put(id, rdv);
             return Response.status(Response.Status.OK).build();
