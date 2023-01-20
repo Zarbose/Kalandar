@@ -46,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/Kalandar/kalandar-api/src/main/webapp",
+    "last_opened_file_path": "C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/Kalandar/kalandar-api",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -253,6 +253,8 @@
       <workItem from="1673879057652" duration="2001000" />
       <workItem from="1674070740046" duration="839000" />
       <workItem from="1674139839212" duration="4822000" />
+      <workItem from="1674229641798" duration="6000" />
+      <workItem from="1674229660391" duration="162000" />
     </task>
     <servers />
   </component>

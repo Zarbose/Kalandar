@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,8 +54,11 @@ public class RdvsResource {
     @POST
     @Produces(MediaType.TEXT_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String newRdv(@FormParam("id") String id, @FormParam("title") String title) throws IOException {
-        Rdv rdv = new Rdv(id,title,"blabla",new Date(), new Date());
+    public String newRdv(@FormParam("desc") String desc) throws IOException {
+        String pattern = "ddMMYYYYHmsS";
+        SimpleDateFormat formatDate = new SimpleDateFormat(pattern);
+        String id = formatDate.format(new Date());
+        Rdv rdv = new Rdv(id,desc,new Date(), new Date());
         DaoRdv.instance.getRdvs().put(rdv.getId(),rdv);
         return "<?xml version=\"1.0\"?>" + "<links> <href>" +
                 uriInfo.getAbsolutePath() + "/"+ id + " </href> </links>";

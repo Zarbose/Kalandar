@@ -4,20 +4,18 @@ import java.util.Date;
 
 public class Rdv {
     private String id;
-    private String title, desc;
+    private String desc;
     private Date startDate, endDate;
 
     public Rdv() {
         super();
         this.id=null;
-        this.title=null;
         this.desc=null;
         this.startDate=null;
         this.endDate=null;
     }
-    public Rdv(String id, String title, String desc, Date startDate, Date endDate) {
+    public Rdv(String id, String desc, Date startDate, Date endDate) {
         this.id=id;
-        this.title=title;
         this.desc=desc;
         this.startDate=startDate;
         this.endDate=endDate;
@@ -25,9 +23,6 @@ public class Rdv {
 
     public String getId() {
         return id;
-    }
-    public String getTitle() {
-        return title;
     }
     public String getDesc() {
         return desc;
