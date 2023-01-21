@@ -2,15 +2,21 @@ package df.calendar.model;
 
 import com.owlike.genson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-
+@XmlRootElement
 public class Rdv {
+    @XmlElement(name = "id")
     @JsonProperty("id")
     private String id;
+    @XmlElement(name = "desc")
     @JsonProperty("desc")
     private String desc;
+    @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private Date startDate;
+    @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private Date endDate;
 

@@ -47,7 +47,7 @@ public class RdvsResource {
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public String getRdv() {
+    public String getRdvJson() {
 
         Genson genson = new Genson();
 
