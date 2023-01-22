@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 @XmlRootElement
-public class Rdv {
+public class Event {
     @XmlElement(name = "id")
     @JsonProperty("id")
     private String id;
@@ -20,14 +20,14 @@ public class Rdv {
     @JsonProperty("endDate")
     private Date endDate;
 
-    public Rdv() {
+    public Event() {
         super();
         this.id=null;
         this.desc=null;
         this.startDate=null;
         this.endDate=null;
     }
-    public Rdv(String id, String desc, Date startDate, Date endDate) {
+    public Event(String id, String desc, Date startDate, Date endDate) {
         this.id=id;
         this.desc=desc;
         this.startDate=startDate;

@@ -2,7 +2,7 @@ package df.calendar;
 
 
 import com.owlike.genson.Genson;
-import df.calendar.model.Rdv;
+import df.calendar.model.Event;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Path("/rdv")
-public class RdvsResource {
+public class EventsResource {
     @Context
     UriInfo uriInfo;
 
@@ -27,10 +27,10 @@ public class RdvsResource {
 
     @GET
     @Produces(MediaType.TEXT_XML)
-    public List<Rdv> getRdvListe() {
-        List<Rdv> tousRdv = new ArrayList<Rdv>();
-        tousRdv.addAll(DaoRdv.instance.getRdvs().values());
-        return tousRdv;
+    public List<Event> getRdvListe() {
+        List<Event> tousEvent = new ArrayList<Event>();
+        tousEvent.addAll(DaoRdv.instance.getRdvs().values());
+        return tousEvent;
     }
 
     @GET
@@ -38,7 +38,7 @@ public class RdvsResource {
     public String getRdvList2() {
         StringBuffer result = new StringBuffer("<html><body><h1>Rdv</h1><ul>");
         String loc = uriInfo.getAbsolutePath().toString();
-        for (Rdv r : DaoRdv.instance.getRdvs().values()) {
+        for (Event r : DaoRdv.instance.getRdvs().values()) {
             result.append("<li><a href=\""+loc+ "/"+ r.getId()+"\">"
                     +loc+ "/"+ r.getId()+"</a></li>");
         }
@@ -51,10 +51,10 @@ public class RdvsResource {
 
         Genson genson = new Genson();
 
-        List<Rdv> allRdv = new ArrayList<Rdv>();
-        allRdv.addAll(DaoRdv.instance.getRdvs().values());
+        List<Event> allEvent = new ArrayList<Event>();
+        allEvent.addAll(DaoRdv.instance.getRdvs().values());
 
-        String json = genson.serialize(allRdv);
+        String json = genson.serialize(allEvent);
         return json;
     }
 
@@ -67,8 +67,8 @@ public class RdvsResource {
         String id = formatDate.format(new Date());
 
 
-        Rdv rdv = new Rdv(id,desc,new Date(), new Date());
-        DaoRdv.instance.getRdvs().put(rdv.getId(),rdv);
+        Event event = new Event(id,desc,new Date(), new Date());
+        DaoRdv.instance.getRdvs().put(event.getId(), event);
         return "<?xml version=\"1.0\"?>" + "<links> <href>" + uriInfo.getAbsolutePath() + "/"+ id + " </href> </links>";
     }
 
@@ -76,20 +76,20 @@ public class RdvsResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response newRdv2(String data){
         Genson genson = new Genson();
-        Rdv rdv = genson.deserialize(data,Rdv.class);
+        Event event = genson.deserialize(data, Event.class);
 
-        if(DaoRdv.instance.getRdvs().containsKey(rdv.getId())) {
+        if(DaoRdv.instance.getRdvs().containsKey(event.getId())) {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
-            DaoRdv.instance.getRdvs().put(rdv.getId(),rdv);
+            DaoRdv.instance.getRdvs().put(event.getId(), event);
             return Response.status(Response.Status.OK).build();
         }
     }
 
 
     @Path("{id}")
-    public RdvRessource getRdv(@PathParam("id") String id) {
-        return new RdvRessource(uriInfo, request, id);
+    public EventRessource getRdv(@PathParam("id") String id) {
+        return new EventRessource(uriInfo, request, id);
     }
 
 }
