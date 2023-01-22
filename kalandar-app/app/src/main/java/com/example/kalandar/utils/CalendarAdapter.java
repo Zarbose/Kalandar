@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.utils;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kalandar.utils.CalendarUtils;
+import com.example.kalandar.R;
+import com.example.kalandar.views.CalendarViewHolder;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
+public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
     private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;

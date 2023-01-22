@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.utils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

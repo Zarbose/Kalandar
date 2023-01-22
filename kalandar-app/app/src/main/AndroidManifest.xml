@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kalandar"
         tools:targetApi="31">
-        <activity android:name=".EventEditActivity"></activity>
-        <activity android:name=".WeekViewActivity" />
+        <activity android:name=".views.EventEditActivity"></activity>
+        <activity android:name=".views.WeekViewActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

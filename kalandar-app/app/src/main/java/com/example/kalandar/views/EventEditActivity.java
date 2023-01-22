@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.kalandar.R;
+import com.example.kalandar.model.Event;
+import com.example.kalandar.utils.CalendarUtils;
 
 import java.time.LocalTime;
 

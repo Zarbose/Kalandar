@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.kalandar.R;
+import com.example.kalandar.model.Event;
+import com.example.kalandar.utils.CalendarUtils;
 
 import java.util.List;
 

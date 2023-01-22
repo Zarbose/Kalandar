@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

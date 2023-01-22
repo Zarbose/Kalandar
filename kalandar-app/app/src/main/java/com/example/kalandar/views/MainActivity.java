@@ -1,4 +1,4 @@
-package com.example.kalandar;
+package com.example.kalandar.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -8,15 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import static com.example.kalandar.CalendarUtils.daysInMonthArray;
-import static com.example.kalandar.CalendarUtils.monthYearFromDate;
+import static com.example.kalandar.utils.CalendarUtils.daysInMonthArray;
+import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
+
+import com.example.kalandar.utils.CalendarAdapter;
+import com.example.kalandar.utils.CalendarUtils;
+import com.example.kalandar.R;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {

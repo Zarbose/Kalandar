@@ -1,10 +1,13 @@
-package com.example.kalandar;
+package com.example.kalandar.views;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kalandar.R;
+import com.example.kalandar.utils.CalendarAdapter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

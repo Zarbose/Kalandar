@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e6d107a-7174-4bed-8d64-5aaed010dc71" name="Changes" comment="" />
+    <list default="true" id="0e6d107a-7174-4bed-8d64-5aaed010dc71" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../kalandar-app/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/CalendarAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/CalendarAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/WeekViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/WeekViewActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/res/layout/activity_week_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/res/layout/activity_week_view.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,6 +268,8 @@
       <workItem from="1674229660391" duration="162000" />
       <workItem from="1674237561838" duration="7359000" />
       <workItem from="1674300557103" duration="1396000" />
+      <workItem from="1674316745629" duration="1779000" />
+      <workItem from="1674406377963" duration="2367000" />
     </task>
     <servers />
   </component>
