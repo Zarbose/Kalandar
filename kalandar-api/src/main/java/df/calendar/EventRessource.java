@@ -1,5 +1,6 @@
 package df.calendar;
 
+import com.owlike.genson.Genson;
 import df.calendar.model.Event;
 
 import javax.ws.rs.*;
@@ -22,10 +23,14 @@ public class EventRessource {
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Event getRdv() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getRdv() {
+        Genson genson = new Genson();
+
         Event event = DaoRdv.instance.getRdvs().get(id);
-        return event;
+
+        String json = genson.serialize(event);
+        return json;
     }
 
     @DELETE

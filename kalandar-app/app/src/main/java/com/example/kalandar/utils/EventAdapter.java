@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
-import com.example.kalandar.utils.CalendarUtils;
 
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class EventAdapter extends ArrayAdapter<Event>
 
         TextView eventCellTV = convertView.findViewById(R.id.eventCellTV);
 
-        String eventTitle = event.getName() +" "+ CalendarUtils.formattedTime(event.getTime());
+        String eventTitle = event.getDesc() +" "+ CalendarUtils.formattedTime(event.getTime());
         eventCellTV.setText(eventTitle);
         return convertView;
     }

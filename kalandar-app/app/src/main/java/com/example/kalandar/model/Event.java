@@ -1,8 +1,10 @@
 package com.example.kalandar.model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Event
 {
@@ -21,26 +23,31 @@ public class Event
         return events;
     }
 
-
-    private String name;
+    private String id;
+    private String desc;
     private LocalDate date;
     private LocalTime time;
 
-    public Event(String name, LocalDate date, LocalTime time)
+    public Event(String desc, LocalDate date, LocalTime time)
     {
-        this.name = name;
+        String pattern = "ddMMYYYYHmsS";
+        SimpleDateFormat formatDate = new SimpleDateFormat(pattern);
+        String id = formatDate.format(new Date());
+
+        this.id=id;
+        this.desc = desc;
         this.date = date;
         this.time = time;
     }
 
-    public String getName()
+    public String getDesc()
     {
-        return name;
+        return desc;
     }
 
-    public void setName(String name)
+    public void setDesc(String desc)
     {
-        this.name = name;
+        this.desc = desc;
     }
 
     public LocalDate getDate()

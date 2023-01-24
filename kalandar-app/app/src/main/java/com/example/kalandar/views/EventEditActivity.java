@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.utils.CalendarUtils;
+import com.example.kalandar.utils.HttpRequest;
+import com.owlike.genson.Genson;
 
+import java.io.IOException;
 import java.time.LocalTime;
 
 public class EventEditActivity extends AppCompatActivity
@@ -26,23 +29,36 @@ public class EventEditActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_edit);
         initWidgets();
-        time = LocalTime.now();
+        this.time = LocalTime.now();
         eventDateTV.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
-        eventTimeTV.setText("Time: " + CalendarUtils.formattedTime(time));
+        this.eventTimeTV.setText("Time: " + CalendarUtils.formattedTime(time));
     }
 
     private void initWidgets()
     {
-        eventNameET = findViewById(R.id.eventNameET);
-        eventDateTV = findViewById(R.id.eventDateTV);
-        eventTimeTV = findViewById(R.id.eventTimeTV);
+        this.eventNameET = findViewById(R.id.eventNameET);
+        this.eventDateTV = findViewById(R.id.eventDateTV);
+        this.eventTimeTV = findViewById(R.id.eventTimeTV);
     }
 
-    public void saveEventAction(View view)
-    {
+    public void saveEventAction(View view) {
         String eventName = eventNameET.getText().toString();
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time);
         Event.eventsList.add(newEvent);
+
+        try{
+            Genson genson = new Genson();
+            String json = genson.serialize(newEvent);
+
+            HttpRequest httR = new HttpRequest();
+            httR.postRequest(json);
+        }
+        catch (IOException e){
+
+        }
+
+        // POST
+
         finish();
     }
 }

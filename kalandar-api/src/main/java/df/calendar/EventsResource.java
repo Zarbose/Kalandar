@@ -3,6 +3,7 @@ package df.calendar;
 
 import com.owlike.genson.Genson;
 import df.calendar.model.Event;
+import df.calendar.utils.RequestHttp;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -11,9 +12,7 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Path("/rdv")
@@ -23,7 +22,6 @@ public class EventsResource {
 
     @Context
     Request request;
-
 
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -46,44 +44,54 @@ public class EventsResource {
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public String getRdvJson() {
+        String json=new String("");
+        try{
+            Genson genson = new Genson();
 
-        Genson genson = new Genson();
+            List<Event> allEvent = new ArrayList<Event>();
+            allEvent.addAll(DaoRdv.instance.getRdvs().values());
 
-        List<Event> allEvent = new ArrayList<Event>();
-        allEvent.addAll(DaoRdv.instance.getRdvs().values());
+            json = genson.serialize(allEvent);
+        }
+        catch (Exception e){ }
 
-        String json = genson.serialize(allEvent);
+        try{
+            System.out.println("Test 1");
+            RequestHttp request = new RequestHttp();
+            System.out.println("Test 2");
+            Event evn = DaoRdv.instance.getRdvs().get("1");
+            Genson genson = new Genson();
+            String tmp_json = genson.serialize(evn);
+            request.postRequest(tmp_json);
+
+            System.out.println("Test Fin");
+        }
+        catch (IOException e){
+            System.out.println(e);
+        }
+
         return json;
-    }
-
-    @POST
-    @Produces(MediaType.TEXT_XML)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String newRdv(@FormParam("desc") String desc) throws IOException {
-        String pattern = "ddMMYYYYHmsS";
-        SimpleDateFormat formatDate = new SimpleDateFormat(pattern);
-        String id = formatDate.format(new Date());
-
-
-        Event event = new Event(id,desc,new Date(), new Date());
-        DaoRdv.instance.getRdvs().put(event.getId(), event);
-        return "<?xml version=\"1.0\"?>" + "<links> <href>" + uriInfo.getAbsolutePath() + "/"+ id + " </href> </links>";
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response newRdv2(String data){
         Genson genson = new Genson();
-        Event event = genson.deserialize(data, Event.class);
 
-        if(DaoRdv.instance.getRdvs().containsKey(event.getId())) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            DaoRdv.instance.getRdvs().put(event.getId(), event);
-            return Response.status(Response.Status.OK).build();
+        try{
+            Event event = genson.deserialize(data, Event.class);
+
+            if(DaoRdv.instance.getRdvs().containsKey(event.getId())) {
+                return Response.status(Response.Status.NOT_FOUND).build();
+            } else {
+                DaoRdv.instance.getRdvs().put(event.getId(), event);
+                return Response.status(Response.Status.OK).build();
+            }
         }
+        catch (Exception e) { }
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
 
