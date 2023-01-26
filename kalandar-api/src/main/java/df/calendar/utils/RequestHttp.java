@@ -1,9 +1,6 @@
 package df.calendar.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -11,8 +8,45 @@ public class RequestHttp {
 
     private URL url;
 
+    private static final String url_string="http://localhost:8080/kalandar_api_war/rest/rdv";
+
+
     public RequestHttp() throws IOException {
-        this.url =  new URL("http://localhost:8080/kalandar_api_war/rest/rdv");
+        this.url =  new URL(this.url_string);
+    }
+
+    public void getRequest(String json) throws IOException{
+        HttpURLConnection con = (HttpURLConnection) this.url.openConnection();
+        con.setRequestMethod("GET");
+        // con.setRequestProperty("Accept", "application/json");
+
+        int responseCode = con.getResponseCode();
+        System.out.println("GET Response Code :: " + responseCode);
+
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            /*BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            // print result
+            System.out.println(response.toString());*/
+            try{
+                InputStream in = new BufferedInputStream(con.getInputStream());
+            }
+            finally {
+                con.disconnect();
+            }
+
+        }
+        else {
+            System.out.println("GET request did not work.");
+        }
+
     }
 
     public void postRequest(String json) throws IOException {

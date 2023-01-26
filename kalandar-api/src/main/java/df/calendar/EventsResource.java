@@ -23,7 +23,7 @@ public class EventsResource {
     @Context
     Request request;
 
-    @GET
+    /*@GET
     @Produces(MediaType.TEXT_XML)
     public List<Event> getRdvListe() {
         List<Event> tousEvent = new ArrayList<Event>();
@@ -41,7 +41,7 @@ public class EventsResource {
                     +loc+ "/"+ r.getId()+"</a></li>");
         }
         return result.toString()+"</ul></body></html>";
-    }
+    }*/
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -56,21 +56,6 @@ public class EventsResource {
             json = genson.serialize(allEvent);
         }
         catch (Exception e){ }
-
-        try{
-            System.out.println("Test 1");
-            RequestHttp request = new RequestHttp();
-            System.out.println("Test 2");
-            Event evn = DaoRdv.instance.getRdvs().get("1");
-            Genson genson = new Genson();
-            String tmp_json = genson.serialize(evn);
-            request.postRequest(tmp_json);
-
-            System.out.println("Test Fin");
-        }
-        catch (IOException e){
-            System.out.println(e);
-        }
 
         return json;
     }

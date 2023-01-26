@@ -41,18 +41,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/Kalandar/kalandar-api/src/main/java/df/calendar/utils",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/simon/Documents/Scolaire/MASTER/M1/Cours/ArchiSi/Kalandar/kalandar-api/src/main/java/df/calendar/utils&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\simon\Documents\Scolaire\MASTER\M1\Cours\ArchiSi\Kalandar\kalandar-api\src\main\java\df\calendar\utils" />
@@ -148,6 +148,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
+      <option name="OPEN_IN_BROWSER" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="kalandar-api:war">
@@ -261,7 +262,8 @@
       <workItem from="1674316745629" duration="1779000" />
       <workItem from="1674406377963" duration="3658000" />
       <workItem from="1674578453465" duration="386000" />
-      <workItem from="1674589098479" duration="7692000" />
+      <workItem from="1674589098479" duration="8348000" />
+      <workItem from="1674677028884" duration="9458000" />
     </task>
     <servers />
   </component>

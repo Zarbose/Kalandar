@@ -2,6 +2,8 @@ package com.example.kalandar.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,12 +13,16 @@ import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.utils.HttpRequest;
-import com.owlike.genson.Genson;
+import com.example.kalandar.utils.RequestHttp;
 
-import java.io.IOException;
+import org.chromium.net.CronetEngine;
+import org.chromium.net.UrlRequest;
+
 import java.time.LocalTime;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
-public class EventEditActivity extends AppCompatActivity
+public class EventEditActivity extends AppCompatActivity /*implements UrlListener*/
 {
     private EditText eventNameET;
     private TextView eventDateTV, eventTimeTV;
@@ -46,19 +52,25 @@ public class EventEditActivity extends AppCompatActivity
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time);
         Event.eventsList.add(newEvent);
 
-        try{
-            Genson genson = new Genson();
-            String json = genson.serialize(newEvent);
+        // Genson genson = new Genson();
+        // String json = genson.serialize(newEvent);
 
-            HttpRequest httR = new HttpRequest();
-            httR.postRequest(json);
-        }
-        catch (IOException e){
-
-        }
 
         // POST
+        // AsyncTask task = new HttpRequest();
+        // task.execute("http://10.0.2.2:8080/kalandar_api_war/rest/rdv");
 
-        finish();
+        new HttpRequest().execute("http://10.0.2.2:8080/kalandar_api_war/rest/rdv");
+        /*Context ctx = this;
+        Executor executor = Executors.newSingleThreadExecutor();
+        CronetEngine.Builder engineBuilder = new CronetEngine.Builder(ctx).build();
+        CronetEngine cronetEngine = engineBuilder.build();
+        UrlRequest.Builder requestBuilder = cronetEngine.newUrlRequestBuilder(
+                "http://localhost:8080/kalandar_api_war/rest/rdv", new RequestHttp(), executor);
+
+        UrlRequest request = requestBuilder.build();
+        request.start();*/
     }
+
+
 }

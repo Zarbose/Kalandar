@@ -1,45 +1,90 @@
 package com.example.kalandar.utils;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.example.kalandar.views.EventEditActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpRequest {
+public class HttpRequest extends AsyncTask<String, Void, String> {
 
-    private URL url;
+    private String server_response;
 
-    public HttpRequest() throws IOException {
-        this.url =  new URL("http://localhost:8080/kalandar_api_war/rest/rdv");
-    }
 
-    public void postRequest(String json) throws IOException {
-        HttpURLConnection con = (HttpURLConnection)url.openConnection();
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Content-Type", "application/json");
+    @Override
+    protected String doInBackground(String... strings) {
 
-        con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("Accept", "application/json");
+        URL url;
+        HttpURLConnection urlConnection = null;
 
-        con.setDoOutput(true);
-        String jsonInputString = json;
+        try {
+            url = new URL(strings[0]);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            // urlConnection.setRequestProperty("Content-Type", "application/json");
 
-        try(OutputStream os = con.getOutputStream()) {
-            byte[] input = jsonInputString.getBytes("utf-8");
-            os.write(input, 0, input.length);
-        }
+            int responseCode = urlConnection.getResponseCode();
 
-        try(BufferedReader br = new BufferedReader(
-                new InputStreamReader(con.getInputStream(), "utf-8"))) {
-            StringBuilder response = new StringBuilder();
-            String responseLine = null;
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
+
+            if(responseCode == HttpURLConnection.HTTP_OK){
+                server_response = readStream(urlConnection.getInputStream());
+
+                JSONArray json = new JSONArray(server_response);
+
+                //Log.e("CatalogClient","",server_response);
+                Log.e("Response", "" + server_response);
             }
-            System.out.println(response.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+        return null;
     }
 
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        Log.e("Response", "" + server_response);
+    }
+
+    private String readStream(InputStream in) {
+        BufferedReader reader = null;
+        StringBuffer response = new StringBuffer();
+        try {
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return response.toString();
+    }
 }
+
+
+
+
+
+
+
