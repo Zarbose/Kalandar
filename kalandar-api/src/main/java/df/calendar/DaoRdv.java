@@ -8,7 +8,6 @@ import java.util.Map;
 
 public enum DaoRdv {
     instance;
-    // private ArrayList<Rdv> contentProvider = new ArrayList<>();
     private Map<String, Event> contentProvider = new HashMap<String, Event>();
 
     private DaoRdv() {

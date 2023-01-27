@@ -2,12 +2,7 @@ package df.calendar.model;
 
 import com.owlike.genson.annotation.JsonProperty;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Event {
@@ -20,21 +15,22 @@ public class Event {
     @JsonProperty("date")
     private Date date;
 
-    @JsonProperty("time")
-    private Date time;
+    @JsonProperty("end")
+    private Date end;
+
 
     public Event() {
         super();
         this.id=null;
         this.desc=null;
         this.date=null;
-        this.time=null;
+        this.end=null;
     }
-    public Event(String id, String desc, Date date, Date time) {
+    public Event(String id, String desc, Date date, Date end) {
         this.id=id;
         this.desc=desc;
         this.date=date;
-        this.time=time;
+        this.end=end;
     }
 
     public String getId() {
@@ -46,8 +42,9 @@ public class Event {
     public Date getDate() {
         return date;
     }
-    public Date getTime() {
-        return time;
+
+    public Date getEnd(){
+        return end;
     }
 
     public String toString(){
@@ -57,7 +54,7 @@ public class Event {
         String str_date = formatDate.format(this.date);
 
         SimpleDateFormat formatTime = new SimpleDateFormat(patternTime);
-        String str_time = formatTime.format(this.time);
+        String str_time = formatTime.format(this.date);
 
         return "id = " + this.id + " desc = " + this.desc + " date = "+str_date+" time = "+str_time;
     }

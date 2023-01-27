@@ -51,26 +51,6 @@ public class EventEditActivity extends AppCompatActivity /*implements UrlListene
         String eventName = eventNameET.getText().toString();
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time);
         Event.eventsList.add(newEvent);
-
-        // Genson genson = new Genson();
-        // String json = genson.serialize(newEvent);
-
-
         // POST
-        // AsyncTask task = new HttpRequest();
-        // task.execute("http://10.0.2.2:8080/kalandar_api_war/rest/rdv");
-
-        new HttpRequest().execute("http://10.0.2.2:8080/kalandar_api_war/rest/rdv");
-        /*Context ctx = this;
-        Executor executor = Executors.newSingleThreadExecutor();
-        CronetEngine.Builder engineBuilder = new CronetEngine.Builder(ctx).build();
-        CronetEngine cronetEngine = engineBuilder.build();
-        UrlRequest.Builder requestBuilder = cronetEngine.newUrlRequestBuilder(
-                "http://localhost:8080/kalandar_api_war/rest/rdv", new RequestHttp(), executor);
-
-        UrlRequest request = requestBuilder.build();
-        request.start();*/
     }
-
-
 }

@@ -27,6 +27,7 @@ public class Event
     private String desc;
     private LocalDate date;
     private LocalTime time;
+    private Date eventDate;
 
     public Event(String desc, LocalDate date, LocalTime time)
     {
