@@ -2,8 +2,6 @@ package com.example.kalandar.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,22 +10,17 @@ import android.widget.TextView;
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.utils.CalendarUtils;
-import com.example.kalandar.utils.HttpRequest;
-import com.example.kalandar.utils.RequestHttp;
-
-import org.chromium.net.CronetEngine;
-import org.chromium.net.UrlRequest;
 
 import java.time.LocalTime;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.Date;
 
-public class EventEditActivity extends AppCompatActivity /*implements UrlListener*/
+public class EventEditActivity extends AppCompatActivity
 {
     private EditText eventNameET;
     private TextView eventDateTV, eventTimeTV;
 
     private LocalTime time;
+    // private WeekViewActivity view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,8 +42,11 @@ public class EventEditActivity extends AppCompatActivity /*implements UrlListene
 
     public void saveEventAction(View view) {
         String eventName = eventNameET.getText().toString();
-        Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time);
+        Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time,new Date(),new Date());
         Event.eventsList.add(newEvent);
-        // POST
+        // Post
+
+        newEvent.getAll();
+        finish();
     }
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,7 +33,11 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        // Log.e("Response", "" + "onCreate");
+
         setContentView(R.layout.activity_week_view);
+
         initWidgets();
         setWeekView();
     }
@@ -43,6 +48,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         monthYearText = findViewById(R.id.monthYearTV);
         eventListView = findViewById(R.id.eventListView);
     }
+
 
     private void setWeekView()
     {
@@ -81,6 +87,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         super.onResume();
         setEventAdpater();
+        setWeekView();
     }
 
     private void setEventAdpater()
@@ -90,8 +97,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         eventListView.setAdapter(eventAdapter);
     }
 
-    public void newEventAction(View view)
+    public void newEventAction(View view) // A modif
     {
-        startActivity(new Intent(this, EventEditActivity.class));
+        Intent intent = new Intent(this, EventEditActivity.class);
+        startActivity(intent);
     }
 }

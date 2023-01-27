@@ -1,5 +1,8 @@
 package com.example.kalandar.model;
 
+import com.example.kalandar.utils.RequestsHttp;
+import com.example.kalandar.utils.ThreadManager;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,10 +30,10 @@ public class Event
     private String desc;
     private LocalDate date;
     private LocalTime time;
-    private Date eventDate;
+    private Date start;
+    private Date end;
 
-    public Event(String desc, LocalDate date, LocalTime time)
-    {
+    public Event(String desc, LocalDate date, LocalTime time, Date start, Date end) {
         String pattern = "ddMMYYYYHmsS";
         SimpleDateFormat formatDate = new SimpleDateFormat(pattern);
         String id = formatDate.format(new Date());
@@ -39,7 +42,25 @@ public class Event
         this.desc = desc;
         this.date = date;
         this.time = time;
+
+        this.start=start;
+        this.end=end;
     }
+
+    public void sendPOST(){
+
+    }
+
+    public void getById(){
+
+    }
+
+    public void getAll(){
+        RequestsHttp request = new RequestsHttp("GET_ALL");
+        ThreadManager th = new ThreadManager(request);
+    }
+
+
 
     public String getDesc()
     {

@@ -12,8 +12,8 @@ public class Event {
     @JsonProperty("desc")
     private String desc;
 
-    @JsonProperty("date")
-    private Date date;
+    @JsonProperty("start")
+    private Date start;
 
     @JsonProperty("end")
     private Date end;
@@ -23,13 +23,13 @@ public class Event {
         super();
         this.id=null;
         this.desc=null;
-        this.date=null;
+        this.start =null;
         this.end=null;
     }
-    public Event(String id, String desc, Date date, Date end) {
+    public Event(String id, String desc, Date start, Date end) {
         this.id=id;
         this.desc=desc;
-        this.date=date;
+        this.start = start;
         this.end=end;
     }
 
@@ -39,8 +39,8 @@ public class Event {
     public String getDesc() {
         return desc;
     }
-    public Date getDate() {
-        return date;
+    public Date getStart() {
+        return start;
     }
 
     public Date getEnd(){
@@ -51,10 +51,10 @@ public class Event {
         String patternDate = "dd/MM/YYYY";
         String patternTime = "H:m:s";
         SimpleDateFormat formatDate = new SimpleDateFormat(patternDate);
-        String str_date = formatDate.format(this.date);
+        String str_date = formatDate.format(this.start);
 
         SimpleDateFormat formatTime = new SimpleDateFormat(patternTime);
-        String str_time = formatTime.format(this.date);
+        String str_time = formatTime.format(this.start);
 
         return "id = " + this.id + " desc = " + this.desc + " date = "+str_date+" time = "+str_time;
     }

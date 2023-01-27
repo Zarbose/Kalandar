@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,20 +16,32 @@ import java.util.ArrayList;
 import static com.example.kalandar.utils.CalendarUtils.daysInMonthArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
 
+import com.example.kalandar.model.Event;
 import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.R;
+import com.example.kalandar.utils.RequestsHttp;
+import com.example.kalandar.utils.RequestsListener;
+import com.example.kalandar.utils.ThreadManager;
 
-public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, RequestsListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+
+    private ArrayList<Event> eventsList = new ArrayList<>();
+    private ThreadManager th;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        // GET ALL
+        RequestsHttp request = new RequestsHttp("GET_ALL");
+        this.th = new ThreadManager(request,this);
+
         setContentView(R.layout.activity_main);
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
@@ -77,5 +90,11 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public void weeklyAction(View view)
     {
         startActivity(new Intent(this, WeekViewActivity.class));
+    }
+
+    @Override
+    public void updateAllEvents() {
+        String data = this.th.getResultData();
+        Log.e("Response", "" + data);
     }
 }

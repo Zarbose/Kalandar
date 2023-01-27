@@ -35,6 +35,8 @@ public class EventsResource {
         }
         catch (Exception e){ }
 
+
+        System.out.println("Ici");
         return json;
     }
 
