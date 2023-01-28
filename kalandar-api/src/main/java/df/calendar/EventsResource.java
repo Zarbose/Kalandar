@@ -11,7 +11,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Path("/rdv")
 public class EventsResource {
@@ -28,7 +30,13 @@ public class EventsResource {
         try{
             Genson genson = new Genson();
 
-            List<Event> allEvent = new ArrayList<Event>();
+            // Map<String,Event> allEvent = new HashMap<String,Event>();
+            List<Event> allEvent = new ArrayList<>();
+
+            /*for (int i = 0; i < DaoRdv.instance.getRdvs().values().size(); i++) {
+                allEvent.put(i,DaoRdv.instance.getRdvs().values().);
+            }*/
+
             allEvent.addAll(DaoRdv.instance.getRdvs().values());
 
             json = genson.serialize(allEvent);

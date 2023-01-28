@@ -22,6 +22,7 @@ import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.R;
 import com.example.kalandar.utils.EventAdapter;
+import com.example.kalandar.utils.RequestsListener;
 
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -29,14 +30,18 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
 
+    private ArrayList<Event> eventsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        // Log.e("Response", "" + "onCreate");
-
+        Log.e("Response", "" + "onCreate");
         setContentView(R.layout.activity_week_view);
+
+        // Intent intent = getIntent();
+        // this.eventsList=intent.getParcelableArrayListExtra("events");
 
         initWidgets();
         setWeekView();
