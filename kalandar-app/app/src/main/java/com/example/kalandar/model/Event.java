@@ -48,11 +48,11 @@ public class Event
     }
 
     public void sendPOST(){
-
+        // TODO
     }
 
     public void getById(){
-
+        // TODO
     }
 
     public void getAll(){

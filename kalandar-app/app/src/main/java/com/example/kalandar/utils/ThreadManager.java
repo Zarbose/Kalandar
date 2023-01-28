@@ -41,7 +41,7 @@ public class ThreadManager implements Handler.Callback, Runnable
         String data = message.getData().getString("event");
         // Log.e("Response", "" + data);
         this.resultData=data;
-        
+
         if (this.listener != null) {
             listener.updateAllEvents();
         }
