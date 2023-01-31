@@ -43,9 +43,15 @@ public class ThreadManager implements Handler.Callback, Runnable
         // Log.e("Response", "" + data);
         this.resultData=data;
 
-        if (this.listener != null) {
-            listener.updateAllEvents();
+        if (this.listener != null && this.r.getType().equals("GET_ALL")) {
+            listener.updateMain();
         }
+        else if (this.listener != null && this.r.getType().equals("DELETE")){
+            listener.updateWeek();
+        }
+        /*else if (this.listener != null && this.r.getType().equals("PUT")){
+            listener.updateWeek();
+        }*/
 
         return true;
     }
@@ -72,6 +78,12 @@ public class ThreadManager implements Handler.Callback, Runnable
         }
         else if (r.getType().equals("DELETE")){
             this.r.requestDelete();
+            server_response=this.r.getServer_response();
+            bundle.putString("event",server_response);
+            msg.setData(bundle);
+        }
+        else if(r.getType().equals("PUT")){
+            this.r.requestPut();
             server_response=this.r.getServer_response();
             bundle.putString("event",server_response);
             msg.setData(bundle);

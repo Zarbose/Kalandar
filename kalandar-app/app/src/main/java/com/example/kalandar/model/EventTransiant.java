@@ -5,8 +5,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.kalandar.requests.RequestsHttp;
+import com.example.kalandar.requests.RequestsListener;
 import com.example.kalandar.requests.ThreadManager;
 import com.owlike.genson.Genson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,16 +52,17 @@ public class EventTransiant
 
 
     @NonNull
-    @Override
     public String toString(){
-        String patternDate = "dd/MM/YYYY";
-        String patternTime = "H:m:s";
-        SimpleDateFormat formatDate = new SimpleDateFormat(patternDate);
-        String str_date = formatDate.format(this.start);
-        SimpleDateFormat formatTime = new SimpleDateFormat(patternTime);
-        String str_time = formatTime.format(this.start);
-
-        return "id = " + this.id + " desc = " + this.desc + " date = "+str_date+" time = "+str_time;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id", this.id);
+            jsonObject.put("desc", this.desc);
+            jsonObject.put("start", this.start.getTime());
+            jsonObject.put("end", this.end.getTime());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
     }
 
     public void sendPOST(){
@@ -67,9 +72,16 @@ public class EventTransiant
         ThreadManager th = new ThreadManager(request);
     }
 
-    public void sendDELETE(){
-        Log.e("Response", "DELETE launch " + "");
+    public void sendDELETE(RequestsListener listener){
+         // Log.e("Response", "DELETE launch " + "");
         RequestsHttp request = new RequestsHttp("DELETE",this.id);
+        ThreadManager th = new ThreadManager(request,listener);
+    }
+
+    public void sendPUT(){
+        Genson genson = new Genson();
+        String json = genson.serialize(this);
+        RequestsHttp request = new RequestsHttp("PUT",this.id,json);
         ThreadManager th = new ThreadManager(request);
     }
 }

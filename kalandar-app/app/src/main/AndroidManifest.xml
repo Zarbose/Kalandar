@@ -14,8 +14,9 @@
         android:theme="@style/Theme.Kalandar"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
-        <activity android:name=".views.EventEditActivity"></activity>
+        <activity android:name=".views.EventEditActivity" />
         <activity android:name=".views.WeekViewActivity" />
+        <activity android:name=".views.ModifyActivity" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true">

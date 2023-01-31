@@ -10,14 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e6d107a-7174-4bed-8d64-5aaed010dc71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/EventTransiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/EventTransiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/CalendarUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/CalendarUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsHttp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/ThreadManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/ThreadManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/EventAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/EventAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/RequestsHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsHttp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/RequestsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/RequestsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/utils/ThreadManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/requests/ThreadManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/EventEditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/EventEditActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/WeekViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/WeekViewActivity.java" afterDir="false" />
@@ -279,7 +276,7 @@
       <workItem from="1674589098479" duration="8348000" />
       <workItem from="1674677028884" duration="9458000" />
       <workItem from="1674933130274" duration="6230000" />
-      <workItem from="1675170949688" duration="7166000" />
+      <workItem from="1675170949688" duration="10097000" />
     </task>
     <servers />
   </component>

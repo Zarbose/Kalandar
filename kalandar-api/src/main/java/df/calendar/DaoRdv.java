@@ -18,18 +18,18 @@ public enum DaoRdv {
 
         try{
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy-H-m-s", Locale.FRANCE);
-            String dateInString = "28-01-2023-18-30-00";
+            String dateInString = "31-01-2023-18-30-00";
             Date start = formatter.parse(dateInString);
             dateInString = "28-01-2023-19-30-00";
             Date end = formatter.parse(dateInString);
-            Event event = new Event("1","desc1",start, end);
+            Event event = new Event("1","Bonjour",start, end);
             this.contentProvider.put(event.getId(), event);
 
-            dateInString = "29-01-2023-18-30-00";
+            dateInString = "31-01-2023-18-30-00";
             start = formatter.parse(dateInString);
-            dateInString = "29-01-2023-19-30-00";
+            dateInString = "31-01-2023-19-30-00";
             end = formatter.parse(dateInString);
-            event = new Event("2","desc2",start,end);
+            event = new Event("2","Aniv Simon",start,end);
             this.contentProvider.put(event.getId(), event);
 
 

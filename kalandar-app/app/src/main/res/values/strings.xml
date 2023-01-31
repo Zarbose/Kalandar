@@ -11,4 +11,6 @@
     <string name="description">Description</string>
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
+    <string name="d_but">Début</string>
+    <string name="fin">Fin</string>
 </resources>

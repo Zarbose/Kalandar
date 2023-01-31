@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Converter {
-    public Event strToEvent(String s) throws JSONException, ParseException {
+    public static Event strToEvent(String s) throws JSONException, ParseException {
         JSONObject json = new JSONObject(s);
 
         Date date_start_str = new Date((Long) json.get("start"));
@@ -33,17 +33,17 @@ public class Converter {
         return evn;
     }
 
-    public ArrayList<Event> arrToEvent(ArrayList<String> toConvert) throws JSONException, ParseException {
+    public static ArrayList<Event> arrToEvent(ArrayList<String> toConvert) throws JSONException, ParseException {
         ArrayList<Event> list = new ArrayList<>();
         for (int i = 0; i < toConvert.size(); i++) {
             String s = toConvert.get(i);
-            list.add(this.strToEvent(s));
+            list.add(Converter.strToEvent(s));
         }
 
         return list;
     }
 
-    public LocalTime dateToLocalTime(Date d){
+    public static LocalTime dateToLocalTime(Date d){
         LocalTime time = d.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
         return time;
     }
@@ -54,7 +54,7 @@ public class Converter {
      * @param d a date
      * @return a Date object
      */
-    public Date stringToDate(String s, LocalDate d) throws ParseException {
+    public static Date stringToDate(String s, LocalDate d) throws ParseException {
         String str_date = CalendarUtils.formattedDate(d); // dd MMMM yyyy   s = H:m
         String fullDate = str_date+" "+s;
         fullDate=fullDate.replace(":"," ");
@@ -63,5 +63,13 @@ public class Converter {
 
         String dateInString = fullDate;
         return formatter.parse(dateInString);
+    }
+
+    public static int getHour(Date d){
+        return d.getHours();
+    }
+
+    public static int getMinutes(Date d){
+        return d.getMinutes();
     }
 }

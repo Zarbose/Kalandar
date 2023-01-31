@@ -45,7 +45,7 @@ public class RequestsHttp extends Activity{
             this.dataJson=data;
         }
         else if (type.equals("DELETE")){
-            Log.e("Response", "DELETE init" + "");
+            // Log.e("Response", "DELETE init" + "");
             this.id=data;
             this.dataJson=null;
         }
@@ -145,7 +145,7 @@ public class RequestsHttp extends Activity{
 
 
             int responseCode = urlConnection.getResponseCode();
-            Log.e("Response", "responseCode : " + responseCode);
+            // Log.e("Response", "responseCode : " + responseCode);
             if(responseCode == HttpURLConnection.HTTP_OK){
                 server_response = readStream(urlConnection.getInputStream());
             }
@@ -153,6 +153,38 @@ public class RequestsHttp extends Activity{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void requestPut(){
+        URL url;
+        HttpURLConnection urlConnection = null;
+
+        try {
+            String uri_put = uri+"/"+this.id;
+            url = new URL(uri_put);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("PUT");
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            // urlConnection.setRequestProperty("Accept", "application/json");
+            urlConnection.setDoOutput(true);
+
+            // Log.e("Response", "EVENT : " + this.dataJson);
+            String jsonInputString = this.dataJson;
+            try(OutputStream os = urlConnection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = urlConnection.getResponseCode();
+            // Log.e("Response", "responseCode : " + responseCode);
+            if(responseCode == HttpURLConnection.HTTP_OK){
+                server_response = readStream(urlConnection.getInputStream());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

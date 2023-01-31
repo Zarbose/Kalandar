@@ -46,7 +46,7 @@ public class EventRessource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putRdvJson(@PathParam("id") String id, final Event event) {
-
+        System.out.println("PUT");
         if (!Objects.equals(id, event.getId()))
             return Response.status(Response.Status.NOT_FOUND).build();
         if(DaoRdv.instance.getRdvs().containsKey(event.getId())) {

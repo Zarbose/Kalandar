@@ -22,17 +22,19 @@ import static com.example.kalandar.utils.CalendarUtils.daysInWeekArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
 
 import com.example.kalandar.model.EventTransiant;
+import com.example.kalandar.requests.RequestsListener;
 import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.R;
 import com.example.kalandar.utils.EventAdapter;
 
-public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, RequestsListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
+    private Event toDelete = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,14 +65,15 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         String title = item.getTitle().toString();
-
+                        EventTransiant evnT = evn.toEventTransiant();
                         if (title.equals("Modify")){
-                            Toast.makeText(WeekViewActivity.this,"You Clicked : Modify", Toast.LENGTH_SHORT).show();
-
+                            Intent intent = new Intent(WeekViewActivity.this, ModifyActivity.class);
+                            intent.putExtra("event",evn.toString());
+                            startActivity(intent);
                         }
                         else if (title.equals("Delete")){
-                            EventTransiant evnT = evn.toEventTransiant();
-                            evnT.sendDELETE();
+                            WeekViewActivity.this.toDelete = evn;
+                            evnT.sendDELETE(WeekViewActivity.this);
                         }
 
                         return true;
@@ -133,5 +136,14 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         Intent intent = new Intent(this, EventEditActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void updateMain() { }
+
+    @Override
+    public void updateWeek() {
+        Event.eventsList.remove(this.toDelete);
+        setWeekView();
     }
 }

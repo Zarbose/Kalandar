@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     }
 
     @Override
-    public void updateAllEvents() {
+    public void updateMain() {
         String data = this.th.getResultData();
 
         Genson genson = new Genson();
@@ -119,5 +119,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
             Event.eventsList.add(evn);
         }
     }
-
+    @Override
+    public void updateWeek() {}
 }
