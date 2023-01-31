@@ -42,4 +42,9 @@ public class Converter {
 
         return list;
     }
+
+    public LocalTime dateToLocalTime(Date d){
+        LocalTime time = d.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+        return time;
+    }
 }

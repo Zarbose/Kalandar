@@ -11,8 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0e6d107a-7174-4bed-8d64-5aaed010dc71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/WeekViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/WeekViewActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/EventEditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kalandar-app/app/src/main/java/com/example/kalandar/views/EventEditActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +268,7 @@
       <workItem from="1674589098479" duration="8348000" />
       <workItem from="1674677028884" duration="9458000" />
       <workItem from="1674933130274" duration="6230000" />
-      <workItem from="1675170949688" duration="3444000" />
+      <workItem from="1675170949688" duration="3859000" />
     </task>
     <servers />
   </component>

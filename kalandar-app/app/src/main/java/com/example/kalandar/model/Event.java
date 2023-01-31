@@ -103,7 +103,6 @@ public class Event
             e.printStackTrace();
         }
         return jsonObject.toString();
-        //return "[id="+this.id+", desc="+this.desc+", date="+this.date+", time="+this.time+", start="+this.start+", end="+this.end;
     }
 
     public String getId() {

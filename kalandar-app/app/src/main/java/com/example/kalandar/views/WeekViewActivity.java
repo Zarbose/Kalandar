@@ -41,19 +41,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        // Log.e("Response", "" + "onCreate");
         setContentView(R.layout.activity_week_view);
-
-        /*Intent intent = getIntent();
-        this.eventsList=intent.getStringArrayListExtra("events");
-        Converter conv = new Converter();
-        try {
-            conv.arrToEvent(this.eventsList);
-        } catch (JSONException | ParseException e) {
-            e.printStackTrace();
-        }*/
-
         initWidgets();
         setWeekView();
     }

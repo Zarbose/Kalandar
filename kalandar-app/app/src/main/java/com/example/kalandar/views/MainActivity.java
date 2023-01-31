@@ -126,11 +126,9 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
             LocalTime time = date_start_str.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
 
             Event evn =  new Event((String) elm.get("id"),(String) elm.get("desc"),date,time,date_start_str,date_end_str);
-            // eventsList.add(evn.toString());
 
             Event.eventsList.add(evn);
         }
-        // Log.e("Response", "" + eventsList.get(0).toString());
     }
 
 }

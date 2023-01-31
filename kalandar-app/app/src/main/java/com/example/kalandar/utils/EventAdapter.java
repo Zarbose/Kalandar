@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
 
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 public class EventAdapter extends ArrayAdapter<Event>
@@ -33,7 +35,11 @@ public class EventAdapter extends ArrayAdapter<Event>
 
         TextView eventCellTV = convertView.findViewById(R.id.eventCellTV);
 
-        String eventTitle = event.getDesc() +" "+ CalendarUtils.formattedTime(event.getTime());
+        Date end = event.getEnd();
+        Converter conv = new Converter();
+        LocalTime str_end = conv.dateToLocalTime(end);
+
+        String eventTitle = event.getDesc() +" "+ CalendarUtils.formattedTime(event.getTime()).toString().replace(":","h")+" - "+CalendarUtils.formattedTime(str_end).toString().replace(":","h");
         eventCellTV.setText(eventTitle);
         return convertView;
     }

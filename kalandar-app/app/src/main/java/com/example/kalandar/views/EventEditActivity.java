@@ -53,13 +53,12 @@ public class EventEditActivity extends AppCompatActivity
 
         EventTransiant evn = new EventTransiant(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
 
+        // Post
         Genson genson = new Genson();
         String json = genson.serialize(evn);
         RequestsHttp request = new RequestsHttp("POST",json);
         this.th = new ThreadManager(request);
-        // Post
 
-        newEvent.getAll();
         finish();
     }
 }

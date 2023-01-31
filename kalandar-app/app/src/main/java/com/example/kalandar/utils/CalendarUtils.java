@@ -19,7 +19,7 @@ public class CalendarUtils
 
     public static String formattedTime(LocalTime time)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" H:m:s ");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" H:m ");
         return time.format(formatter);
     }
 
