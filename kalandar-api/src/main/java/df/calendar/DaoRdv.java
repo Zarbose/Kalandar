@@ -28,6 +28,7 @@ public enum DaoRdv {
             dateInString = "29-01-2023-18-30-00";
             start = formatter.parse(dateInString);
             dateInString = "29-01-2023-19-30-00";
+            end = formatter.parse(dateInString);
             event = new Event("2","desc2",start,end);
             this.contentProvider.put(event.getId(), event);
 
@@ -35,6 +36,7 @@ public enum DaoRdv {
             dateInString = "01-01-2023-18-30-00";
             start = formatter.parse(dateInString);
             dateInString = "01-01-2023-19-30-00";
+            end = formatter.parse(dateInString);
             event = new Event("3","desc3", start,end);
             this.contentProvider.put(event.getId(), event);
         }catch (ParseException e){}

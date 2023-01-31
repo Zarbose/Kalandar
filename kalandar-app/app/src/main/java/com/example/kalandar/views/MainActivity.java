@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
 
-    private ArrayList<Event> eventsList = new ArrayList<Event>();
+    private ArrayList<String> eventsList = new ArrayList<String>();
     private ThreadManager th;
 
 
@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public void weeklyAction(View view)
     {
         Intent intent = new Intent(this, WeekViewActivity.class);
-        // intent.putExtra("events",this.eventsList);
-        intent.putParcelableArrayListExtra("events",(Pacable)this.eventsList);
+        // intent.putParcelableArrayListExtra("events",this.eventsList);
+        intent.putStringArrayListExtra("events",this.eventsList);
         startActivity(intent);
     }
 
@@ -124,8 +124,11 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
             LocalDate date = date_start_str.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalTime time = date_start_str.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+
             Event evn =  new Event((String) elm.get("id"),(String) elm.get("desc"),date,time,date_start_str,date_end_str);
-            eventsList.add(evn);
+            // eventsList.add(evn.toString());
+
+            Event.eventsList.add(evn);
         }
         // Log.e("Response", "" + eventsList.get(0).toString());
     }

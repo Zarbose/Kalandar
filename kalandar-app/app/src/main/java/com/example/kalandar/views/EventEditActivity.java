@@ -9,7 +9,11 @@ import android.widget.TextView;
 
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
+import com.example.kalandar.model.EventTransiant;
 import com.example.kalandar.utils.CalendarUtils;
+import com.example.kalandar.utils.RequestsHttp;
+import com.example.kalandar.utils.ThreadManager;
+import com.owlike.genson.Genson;
 
 import java.time.LocalTime;
 import java.util.Date;
@@ -20,6 +24,8 @@ public class EventEditActivity extends AppCompatActivity
     private TextView eventDateTV, eventTimeTV;
 
     private LocalTime time;
+    private ThreadManager th;
+
     // private WeekViewActivity view;
 
     @Override
@@ -44,6 +50,13 @@ public class EventEditActivity extends AppCompatActivity
         String eventName = eventNameET.getText().toString();
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time,new Date(),new Date());
         Event.eventsList.add(newEvent);
+
+        EventTransiant evn = new EventTransiant(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
+
+        Genson genson = new Genson();
+        String json = genson.serialize(evn);
+        RequestsHttp request = new RequestsHttp("POST",json);
+        this.th = new ThreadManager(request);
         // Post
 
         newEvent.getAll();

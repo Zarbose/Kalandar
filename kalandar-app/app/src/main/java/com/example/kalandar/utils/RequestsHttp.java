@@ -8,6 +8,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.owlike.genson.Genson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -15,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -32,6 +35,13 @@ public class RequestsHttp extends Activity{
 
         this.type=type;
         this.id=id;
+        this.dataJson=dataJson;
+    }
+
+    public RequestsHttp(String type, String dataJson){
+
+        this.type=type;
+        this.id=null;
         this.dataJson=dataJson;
     }
 
@@ -80,6 +90,35 @@ public class RequestsHttp extends Activity{
         } /*catch (JSONException e) {
             e.printStackTrace();
         }*/
+    }
+
+    public void requestPost(){
+        URL url;
+        HttpURLConnection urlConnection = null;
+
+        try {
+            url = new URL(uri);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept", "application/json");
+            urlConnection.setDoOutput(true);
+
+            String jsonInputString = this.dataJson;
+            try(OutputStream os = urlConnection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = urlConnection.getResponseCode();
+            // Log.e("Response", "responseCode : " + responseCode);
+            if(responseCode == HttpURLConnection.HTTP_OK){
+                server_response = readStream(urlConnection.getInputStream());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String readStream(InputStream in) {

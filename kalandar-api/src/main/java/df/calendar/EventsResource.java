@@ -44,15 +44,15 @@ public class EventsResource {
         catch (Exception e){ }
 
 
-        System.out.println("Ici");
+        System.out.println("GET ALL");
         return json;
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response newRdv2(String data){
+    public Response newRdv(String data){
         Genson genson = new Genson();
-
+        System.out.println("POST");
         try{
             Event event = genson.deserialize(data, Event.class);
 

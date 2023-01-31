@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.kalandar.utils.CalendarUtils.daysInWeekArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
@@ -21,8 +23,11 @@ import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.R;
+import com.example.kalandar.utils.Converter;
 import com.example.kalandar.utils.EventAdapter;
 import com.example.kalandar.utils.RequestsListener;
+
+import org.json.JSONException;
 
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -30,18 +35,24 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
 
-    private ArrayList<Event> eventsList;
+    private ArrayList<String> eventsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        Log.e("Response", "" + "onCreate");
+        // Log.e("Response", "" + "onCreate");
         setContentView(R.layout.activity_week_view);
 
-        // Intent intent = getIntent();
-        // this.eventsList=intent.getParcelableArrayListExtra("events");
+        /*Intent intent = getIntent();
+        this.eventsList=intent.getStringArrayListExtra("events");
+        Converter conv = new Converter();
+        try {
+            conv.arrToEvent(this.eventsList);
+        } catch (JSONException | ParseException e) {
+            e.printStackTrace();
+        }*/
 
         initWidgets();
         setWeekView();

@@ -19,6 +19,7 @@ public class ThreadManager implements Handler.Callback, Runnable
 
     public ThreadManager(RequestsHttp r){
         this.r=r;
+        this.listener=null;
         this.monHandler=new Handler(this);
         this.monThread=new Thread(this);
         this.monThread.start();
@@ -59,6 +60,12 @@ public class ThreadManager implements Handler.Callback, Runnable
 
         if (r.getType().equals("GET_ALL")){
             this.r.requestGetAll();
+            server_response=this.r.getServer_response();
+            bundle.putString("event",server_response);
+            msg.setData(bundle);
+        }
+        else if (r.getType().equals("POST")){
+            this.r.requestPost();
             server_response=this.r.getServer_response();
             bundle.putString("event",server_response);
             msg.setData(bundle);

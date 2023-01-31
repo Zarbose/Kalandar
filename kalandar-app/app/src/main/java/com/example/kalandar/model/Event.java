@@ -2,11 +2,15 @@ package com.example.kalandar.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.example.kalandar.utils.RequestsHttp;
 import com.example.kalandar.utils.ThreadManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,7 +18,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Event implements Parcelable
+public class Event
 {
     public static ArrayList<Event> eventsList = new ArrayList<>();
 
@@ -33,18 +37,6 @@ public class Event implements Parcelable
         start = new Date();
         end = new Date();
     }
-
-    public static final Creator<Event> CREATOR = new Creator<Event>() {
-        @Override
-        public Event createFromParcel(Parcel in) {
-            return new Event(in);
-        }
-
-        @Override
-        public Event[] newArray(int size) {
-            return new Event[size];
-        }
-    };
 
     public static ArrayList<Event> eventsForDate(LocalDate date)
     {
@@ -98,7 +90,32 @@ public class Event implements Parcelable
 
     @NonNull
     public String toString(){
-        return "[id="+this.id+", desc="+this.desc+", date="+this.date+", time="+this.time+", start="+this.start+", end="+this.end;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id", this.id);
+            jsonObject.put("desc", this.desc);
+            jsonObject.put("date", this.date);
+            jsonObject.put("time", this.time);
+            // Log.e("Response", "Ici : " + this.start.getTime());
+            jsonObject.put("start", this.start.getTime());
+            jsonObject.put("end", this.end.getTime());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+        //return "[id="+this.id+", desc="+this.desc+", date="+this.date+", time="+this.time+", start="+this.start+", end="+this.end;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public Date getEnd() {
+        return end;
     }
 
     public String getDesc()
@@ -129,20 +146,5 @@ public class Event implements Parcelable
     public void setTime(LocalTime time)
     {
         this.time = time;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
-        parcel.writeString(desc);
-        parcel.writeString(date.toString());
-        parcel.writeString(time.toString());
-        parcel.writeString(start.toString());
-        parcel.writeString(end.toString());
     }
 }
