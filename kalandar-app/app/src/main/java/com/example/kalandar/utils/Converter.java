@@ -47,4 +47,21 @@ public class Converter {
         LocalTime time = d.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
         return time;
     }
+
+    /**
+     *
+     * @param s an hour
+     * @param d a date
+     * @return a Date object
+     */
+    public Date stringToDate(String s, LocalDate d) throws ParseException {
+        String str_date = CalendarUtils.formattedDate(d); // dd MMMM yyyy   s = H:m
+        String fullDate = str_date+" "+s;
+        fullDate=fullDate.replace(":"," ");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy H m", Locale.ENGLISH);
+
+        String dateInString = fullDate;
+        return formatter.parse(dateInString);
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.kalandar.utils;
+package com.example.kalandar.requests;
 
 import com.example.kalandar.model.Event;
 

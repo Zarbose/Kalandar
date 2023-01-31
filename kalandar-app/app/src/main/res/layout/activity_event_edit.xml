@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Name:"
+        android:text="@string/description"
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
@@ -32,27 +32,38 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Date"
+        android:text="@string/date"
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
 
-    <TextView
-        android:id="@+id/eventTimeTV"
+    <TimePicker
+        android:id="@+id/timePickerStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Time"
+        android:layout_marginTop="10dp"
+        android:text="@string/start"
         android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:timePickerMode="spinner" />
+
+    <TimePicker
+        android:id="@+id/timePickerEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/end"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:timePickerMode="spinner" />
 
     <Button
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/white"
         android:background="@null"
         android:textStyle="bold"

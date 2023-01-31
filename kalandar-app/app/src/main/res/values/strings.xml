@@ -2,4 +2,13 @@
     <string name="app_name">Kalandar</string>
     <string name="back"><![CDATA[<]]></string>
     <string name="forward"><![CDATA[>]]></string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="save">Save</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="name">Name:</string>
+    <string name="description">Description</string>
+    <string name="modify">Modify</string>
+    <string name="delete">Delete</string>
 </resources>

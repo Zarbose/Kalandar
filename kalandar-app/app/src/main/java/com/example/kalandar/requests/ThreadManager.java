@@ -1,4 +1,4 @@
-package com.example.kalandar.utils;
+package com.example.kalandar.requests;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,6 +69,15 @@ public class ThreadManager implements Handler.Callback, Runnable
             server_response=this.r.getServer_response();
             bundle.putString("event",server_response);
             msg.setData(bundle);
+        }
+        else if (r.getType().equals("DELETE")){
+            this.r.requestDelete();
+            server_response=this.r.getServer_response();
+            bundle.putString("event",server_response);
+            msg.setData(bundle);
+        }
+        else{
+            Log.e("Response", "Unknow type of request" + r.getType());
         }
 
         this.monHandler.sendMessage(msg);

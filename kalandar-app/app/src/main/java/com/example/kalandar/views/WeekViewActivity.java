@@ -7,35 +7,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static com.example.kalandar.utils.CalendarUtils.daysInWeekArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
 
+import com.example.kalandar.model.EventTransiant;
 import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.model.Event;
 import com.example.kalandar.R;
-import com.example.kalandar.utils.Converter;
 import com.example.kalandar.utils.EventAdapter;
-import com.example.kalandar.utils.RequestsListener;
-
-import org.json.JSONException;
 
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
-
-    private ArrayList<String> eventsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +41,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setContentView(R.layout.activity_week_view);
         initWidgets();
         setWeekView();
+        initListener();
     }
 
     private void initWidgets()
@@ -53,6 +51,36 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         eventListView = findViewById(R.id.eventListView);
     }
 
+    private void initListener(){
+        eventListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Event evn = (Event) parent.getAdapter().getItem(position);
+                // Log.e("Response", "Ici : " + evn.toString());
+
+                PopupMenu popup = new PopupMenu(WeekViewActivity.this, view);
+                popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        String title = item.getTitle().toString();
+
+                        if (title.equals("Modify")){
+                            Toast.makeText(WeekViewActivity.this,"You Clicked : Modify", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else if (title.equals("Delete")){
+                            EventTransiant evnT = evn.toEventTransiant();
+                            evnT.sendDELETE();
+                        }
+
+                        return true;
+                    }
+                });
+                popup.show();
+                return true;
+            }
+        });
+    }
 
     private void setWeekView()
     {
@@ -101,7 +129,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         eventListView.setAdapter(eventAdapter);
     }
 
-    public void newEventAction(View view) // A modif
+    public void newEventAction(View view)
     {
         Intent intent = new Intent(this, EventEditActivity.class);
         startActivity(intent);

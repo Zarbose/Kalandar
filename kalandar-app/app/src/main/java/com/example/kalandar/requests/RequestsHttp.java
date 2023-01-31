@@ -1,4 +1,4 @@
-package com.example.kalandar.utils;
+package com.example.kalandar.requests;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -32,17 +32,27 @@ public class RequestsHttp extends Activity{
     private String server_response;
 
     public RequestsHttp(String type, String id, String dataJson){
-
         this.type=type;
         this.id=id;
         this.dataJson=dataJson;
     }
 
-    public RequestsHttp(String type, String dataJson){
-
+    public RequestsHttp(String type, String data){
         this.type=type;
-        this.id=null;
-        this.dataJson=dataJson;
+
+        if (type == "POST"){
+            this.id=null;
+            this.dataJson=data;
+        }
+        else if (type.equals("DELETE")){
+            Log.e("Response", "DELETE init" + "");
+            this.id=data;
+            this.dataJson=null;
+        }
+        else {
+            this.id=null;
+            this.dataJson=null;
+        }
     }
 
     public RequestsHttp(String type){
@@ -120,6 +130,31 @@ public class RequestsHttp extends Activity{
             e.printStackTrace();
         }
     }
+
+    public void requestDelete(){
+        URL url;
+        HttpURLConnection urlConnection = null;
+
+        try {
+            String uri_delete = uri+"/"+this.id;
+            url = new URL(uri_delete);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("DELETE");
+            urlConnection.setRequestProperty("Accept", "application/json");
+            urlConnection.setDoOutput(true);
+
+
+            int responseCode = urlConnection.getResponseCode();
+            Log.e("Response", "responseCode : " + responseCode);
+            if(responseCode == HttpURLConnection.HTTP_OK){
+                server_response = readStream(urlConnection.getInputStream());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private String readStream(InputStream in) {
         BufferedReader reader = null;

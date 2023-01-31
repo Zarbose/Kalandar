@@ -1,13 +1,8 @@
 package com.example.kalandar.model;
 
 import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-
-import com.example.kalandar.utils.RequestsHttp;
-import com.example.kalandar.utils.ThreadManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,15 +23,6 @@ public class Event
     private LocalTime time;
     private Date start;
     private Date end;
-
-    protected Event(Parcel in) {
-        id = in.readString();
-        desc = in.readString();
-        date = LocalDate.now();
-        time = LocalTime.now();
-        start = new Date();
-        end = new Date();
-    }
 
     public static ArrayList<Event> eventsForDate(LocalDate date)
     {
@@ -75,19 +61,6 @@ public class Event
         this.end=end;
     }
 
-    public void sendPOST(){
-        // TODO
-    }
-
-    public void getById(){
-        // TODO
-    }
-
-    public void getAll(){
-        RequestsHttp request = new RequestsHttp("GET_ALL");
-        ThreadManager th = new ThreadManager(request);
-    }
-
     @NonNull
     public String toString(){
         JSONObject jsonObject = new JSONObject();
@@ -103,6 +76,10 @@ public class Event
             e.printStackTrace();
         }
         return jsonObject.toString();
+    }
+
+    public EventTransiant toEventTransiant(){
+        return new EventTransiant(this.id,this.desc,this.start,this.end);
     }
 
     public String getId() {

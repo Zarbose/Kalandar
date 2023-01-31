@@ -1,9 +1,11 @@
 package com.example.kalandar.utils;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +44,7 @@ public class EventAdapter extends ArrayAdapter<Event>
 
         String eventTitle = event.getDesc() +" "+ CalendarUtils.formattedTime(event.getTime()).toString().replace(":","h")+" - "+CalendarUtils.formattedTime(str_end).toString().replace(":","h");
         eventCellTV.setText(eventTitle);
+
         return convertView;
     }
 }

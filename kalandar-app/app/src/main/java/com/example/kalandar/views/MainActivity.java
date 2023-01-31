@@ -6,37 +6,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.Reader;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static com.example.kalandar.utils.CalendarUtils.daysInMonthArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
 
 import com.example.kalandar.model.Event;
-import com.example.kalandar.model.EventTransiant;
 import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.R;
-import com.example.kalandar.utils.RequestsHttp;
-import com.example.kalandar.utils.RequestsListener;
-import com.example.kalandar.utils.ThreadManager;
+import com.example.kalandar.requests.RequestsHttp;
+import com.example.kalandar.requests.RequestsListener;
+import com.example.kalandar.requests.ThreadManager;
 import com.owlike.genson.Genson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, RequestsListener
 {
@@ -104,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public void weeklyAction(View view)
     {
         Intent intent = new Intent(this, WeekViewActivity.class);
-        // intent.putParcelableArrayListExtra("events",this.eventsList);
         intent.putStringArrayListExtra("events",this.eventsList);
         startActivity(intent);
     }

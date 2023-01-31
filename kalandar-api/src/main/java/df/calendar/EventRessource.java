@@ -36,6 +36,7 @@ public class EventRessource {
     @DELETE
     public Response deleteRdv() {
         Event event = DaoRdv.instance.getRdvs().remove(id);
+        System.out.println("DELETE");
         if (event != null)
             return Response.status(Response.Status.OK).build();
         else
