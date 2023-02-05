@@ -1,3 +1,6 @@
+Groupe de Simon et Tanguy
+<br /><br />
+
 # Kalandar
 Kalandar est le nom que nous avons donné à notre Calendrier syncronisé.
 <br /><br />
