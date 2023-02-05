@@ -11,3 +11,6 @@ Kalandar est le nom que nous avons donné à notre Calendrier syncronisé.
 - Android 12 (API v31)<br />
 
 _Si vous rencontrez un problème de dépendances, il faut ajouter Genson 1.6 au projet._
+
+## Architecture
+![Infra](infra.svg)
