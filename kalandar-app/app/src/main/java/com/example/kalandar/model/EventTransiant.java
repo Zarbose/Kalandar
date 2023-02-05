@@ -1,6 +1,5 @@
 package com.example.kalandar.model;
 
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +11,6 @@ import com.owlike.genson.Genson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EventTransiant
@@ -40,15 +38,6 @@ public class EventTransiant
     public String getId() {
         return id;
     }
-    public String getDesc() {
-        return desc;
-    }
-    public Date getStart() {
-        return start;
-    }
-    public Date getEnd(){
-        return end;
-    }
 
 
     @NonNull
@@ -73,7 +62,6 @@ public class EventTransiant
     }
 
     public void sendDELETE(RequestsListener listener){
-         // Log.e("Response", "DELETE launch " + "");
         RequestsHttp request = new RequestsHttp("DELETE",this.id);
         ThreadManager th = new ThreadManager(request,listener);
     }

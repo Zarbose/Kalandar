@@ -25,7 +25,7 @@ public enum DaoRdv {
             Event event = new Event("1","Bonjour",start, end);
             this.contentProvider.put(event.getId(), event);
 
-            dateInString = "05-02-2023-18-30-00";
+            dateInString = "05-02-2023-17-30-00";
             start = formatter.parse(dateInString);
             dateInString = "05-02-2023-19-30-00";
             end = formatter.parse(dateInString);

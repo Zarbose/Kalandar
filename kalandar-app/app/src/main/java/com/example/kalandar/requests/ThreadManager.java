@@ -40,7 +40,6 @@ public class ThreadManager implements Handler.Callback, Runnable
     @Override
     public boolean handleMessage(@NonNull Message message) { // UI thread
         String data = message.getData().getString("event");
-        // Log.e("Response", "" + data);
         this.resultData=data;
 
         if (this.listener != null && this.r.getType().equals("GET_ALL")) {
@@ -49,9 +48,6 @@ public class ThreadManager implements Handler.Callback, Runnable
         else if (this.listener != null && this.r.getType().equals("DELETE")){
             listener.updateWeek();
         }
-        /*else if (this.listener != null && this.r.getType().equals("PUT")){
-            listener.updateWeek();
-        }*/
 
         return true;
     }

@@ -39,13 +39,11 @@ public class ModifyActivity extends AppCompatActivity {
 
         Intent intention = getIntent();
         String eventString = (String) intention.getExtras().get("event");
-        // Log.e("Response", "eventEnd : " + eventString);
         try {
             this.evn=Converter.strToEvent(eventString);
         } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }
-        // savedInstanceState.ge
         this.eventNameET.setText(this.evn.getDesc());
 
         this.eventStart.setHour(Converter.getHour(this.evn.getStart()));
@@ -78,7 +76,6 @@ public class ModifyActivity extends AppCompatActivity {
         Date end = Converter.stringToDate(eventEnd,CalendarUtils.selectedDate);
 
         Event newEvent = new Event(this.evn.getId(),eventName, CalendarUtils.selectedDate,this.time,start,end);
-        // Log.e("Response", "EVENT " + newEvent.toString());
 
         for (int i = 0; i < Event.eventsList.size(); i++) {
             Event tmp = Event.eventsList.get(i);

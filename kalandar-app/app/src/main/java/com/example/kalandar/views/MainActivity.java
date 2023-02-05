@@ -42,13 +42,12 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     {
         super.onCreate(savedInstanceState);
 
-        // GET ALL
         RequestsHttp request = new RequestsHttp("GET_ALL");
         this.th = new ThreadManager(request,this);
 
         setContentView(R.layout.activity_main);
         initWidgets();
-        CalendarUtils.selectedDate = LocalDate.now(); // ICI
+        CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
     }
 

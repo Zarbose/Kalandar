@@ -6,14 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -58,14 +56,13 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Event evn = (Event) parent.getAdapter().getItem(position);
-                // Log.e("Response", "Ici : " + evn.toString());
 
                 PopupMenu popup = new PopupMenu(WeekViewActivity.this, view);
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         String title = item.getTitle().toString();
-                        EventTransiant evnT = evn.toEventTransiant();
+                        EventTransiant evnT = evn.toEventTransient();
                         if (title.equals("Modify")){
                             Intent intent = new Intent(WeekViewActivity.this, ModifyActivity.class);
                             intent.putExtra("event",evn.toString());

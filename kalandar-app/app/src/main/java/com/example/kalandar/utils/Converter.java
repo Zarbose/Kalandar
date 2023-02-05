@@ -1,13 +1,11 @@
 package com.example.kalandar.utils;
 
-import android.util.Log;
 
 import com.example.kalandar.model.Event;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -29,7 +27,6 @@ public class Converter {
 
         Event evn = new Event((String) json.get("id"), (String) json.get("desc"),date,time,date_start_str,date_end_str);
 
-        // Log.e("Response", "Oui : " + evn.toString());
         return evn;
     }
 

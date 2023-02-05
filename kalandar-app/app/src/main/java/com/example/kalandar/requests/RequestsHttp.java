@@ -1,17 +1,6 @@
 package com.example.kalandar.requests;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.owlike.genson.Genson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +14,7 @@ public class RequestsHttp extends Activity{
 
     private static final String uri = "http://10.0.2.2:8080/kalandar_api_war/rest/rdv";
 
-    private String type;
+    private final String type;
     private String id;
     private String dataJson;
 
@@ -40,12 +29,11 @@ public class RequestsHttp extends Activity{
     public RequestsHttp(String type, String data){
         this.type=type;
 
-        if (type == "POST"){
+        if (type.equals("POST")){
             this.id=null;
             this.dataJson=data;
         }
         else if (type.equals("DELETE")){
-            // Log.e("Response", "DELETE init" + "");
             this.id=data;
             this.dataJson=null;
         }
@@ -71,10 +59,6 @@ public class RequestsHttp extends Activity{
         return id;
     }
 
-    public String getDataJson() {
-        return dataJson;
-    }
-
     public void requestGetAll(){
         URL url;
         HttpURLConnection urlConnection = null;
@@ -82,24 +66,16 @@ public class RequestsHttp extends Activity{
         try {
             url = new URL(uri);
             urlConnection = (HttpURLConnection) url.openConnection();
-            // urlConnection.setRequestProperty("Content-Type", "application/json");
 
             int responseCode = urlConnection.getResponseCode();
 
-
             if(responseCode == HttpURLConnection.HTTP_OK){
                 server_response = readStream(urlConnection.getInputStream());
-
-                // JSONArray json = new JSONArray(server_response);
-
-                //Log.e("Response", "" + server_response);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-        } /*catch (JSONException e) {
-            e.printStackTrace();
-        }*/
+        }
     }
 
     public void requestPost(){
@@ -121,7 +97,6 @@ public class RequestsHttp extends Activity{
             }
 
             int responseCode = urlConnection.getResponseCode();
-            // Log.e("Response", "responseCode : " + responseCode);
             if(responseCode == HttpURLConnection.HTTP_OK){
                 server_response = readStream(urlConnection.getInputStream());
             }
@@ -143,9 +118,7 @@ public class RequestsHttp extends Activity{
             urlConnection.setRequestProperty("Accept", "application/json");
             urlConnection.setDoOutput(true);
 
-
             int responseCode = urlConnection.getResponseCode();
-            // Log.e("Response", "responseCode : " + responseCode);
             if(responseCode == HttpURLConnection.HTTP_OK){
                 server_response = readStream(urlConnection.getInputStream());
             }
@@ -165,10 +138,8 @@ public class RequestsHttp extends Activity{
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("PUT");
             urlConnection.setRequestProperty("Content-Type", "application/json");
-            // urlConnection.setRequestProperty("Accept", "application/json");
             urlConnection.setDoOutput(true);
 
-            // Log.e("Response", "EVENT : " + this.dataJson);
             String jsonInputString = this.dataJson;
             try(OutputStream os = urlConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
@@ -176,7 +147,6 @@ public class RequestsHttp extends Activity{
             }
 
             int responseCode = urlConnection.getResponseCode();
-            // Log.e("Response", "responseCode : " + responseCode);
             if(responseCode == HttpURLConnection.HTTP_OK){
                 server_response = readStream(urlConnection.getInputStream());
             }

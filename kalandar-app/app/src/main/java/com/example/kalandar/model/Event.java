@@ -1,6 +1,5 @@
 package com.example.kalandar.model;
 
-import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
@@ -69,7 +68,6 @@ public class Event
             jsonObject.put("desc", this.desc);
             jsonObject.put("date", this.date);
             jsonObject.put("time", this.time);
-            // Log.e("Response", "Ici : " + this.start.getTime());
             jsonObject.put("start", this.start.getTime());
             jsonObject.put("end", this.end.getTime());
         } catch (JSONException e) {
@@ -78,7 +76,7 @@ public class Event
         return jsonObject.toString();
     }
 
-    public EventTransiant toEventTransiant(){
+    public EventTransiant toEventTransient(){
         return new EventTransiant(this.id,this.desc,this.start,this.end);
     }
 
@@ -97,11 +95,6 @@ public class Event
     public String getDesc()
     {
         return desc;
-    }
-
-    public void setDesc(String desc)
-    {
-        this.desc = desc;
     }
 
     public LocalDate getDate()

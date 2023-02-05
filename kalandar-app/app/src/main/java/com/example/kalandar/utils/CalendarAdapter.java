@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.R;
 import com.example.kalandar.views.CalendarViewHolder;
 
