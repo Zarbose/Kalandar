@@ -10,6 +10,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.Objects;
 
+/** Represents the management of an event
+ * @author Simon and Tanguy
+ */
 public class EventRessource {
     UriInfo uriInfo;
     Request request;

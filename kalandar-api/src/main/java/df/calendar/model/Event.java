@@ -5,6 +5,9 @@ import com.owlike.genson.annotation.JsonProperty;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/** Represents an event
+ * @author Simon and Tanguy
+ */
 public class Event {
     @JsonProperty("id")
     private String id;

@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+/** Enum to instance some events
+ * @author Simon and Tanguy
+ */
 public enum DaoRdv {
     instance;
     private Map<String, Event> contentProvider = new HashMap<String, Event>();

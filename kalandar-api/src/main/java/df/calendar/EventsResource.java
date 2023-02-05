@@ -13,6 +13,9 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Represents the management of events
+ * @author Simon and Tanguy
+ */
 @Path("/rdv")
 public class EventsResource {
     @Context
