@@ -36,16 +36,6 @@ public class Event {
     public String getId() {
         return id;
     }
-    public String getDesc() {
-        return desc;
-    }
-    public Date getStart() {
-        return start;
-    }
-
-    public Date getEnd(){
-        return end;
-    }
 
     public String toString(){
         String patternDate = "dd/MM/YYYY";
