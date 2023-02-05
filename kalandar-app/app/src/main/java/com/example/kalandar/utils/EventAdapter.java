@@ -17,6 +17,9 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+/** Represents the display way of an event
+ * @author Simon and Tanguy
+ */
 public class EventAdapter extends ArrayAdapter<Event>
 {
     public EventAdapter(@NonNull Context context, List<Event> events)
@@ -36,8 +39,7 @@ public class EventAdapter extends ArrayAdapter<Event>
         TextView eventCellTV = convertView.findViewById(R.id.eventCellTV);
 
         Date end = event.getEnd();
-        Converter conv = new Converter();
-        LocalTime str_end = conv.dateToLocalTime(end);
+        LocalTime str_end = Converter.dateToLocalTime(end);
 
         String eventTitle = event.getDesc() +" "+ CalendarUtils.formattedTime(event.getTime()).toString().replace(":","h")+" - "+CalendarUtils.formattedTime(str_end).toString().replace(":","h");
         eventCellTV.setText(eventTitle);

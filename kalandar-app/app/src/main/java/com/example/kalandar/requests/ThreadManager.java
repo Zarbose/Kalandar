@@ -7,15 +7,17 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+/** Represents the manager for the thread
+ * @author Simon and Tanguy
+ */
 public class ThreadManager implements Handler.Callback, Runnable
 {
-
-    private RequestsHttp r;
+    private final RequestsHttp r;
     private String resultData;
     private RequestsListener listener=null;
 
-    private Handler monHandler;
-    private Thread monThread;
+    private final Handler monHandler;
+    private final Thread monThread;
 
     public ThreadManager(RequestsHttp r){
         this.r=r;

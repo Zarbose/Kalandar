@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
-import com.example.kalandar.model.EventTransiant;
+import com.example.kalandar.model.EventTransient;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.utils.Converter;
 
@@ -22,9 +22,12 @@ import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.Date;
 
+/** Represents the modification of an event
+ * @author Simon and Tanguy
+ */
 public class ModifyActivity extends AppCompatActivity {
     private EditText eventNameET;
-    private TextView eventDateTV, eventTimeTV;
+    private TextView eventDateTV;
     private TimePicker eventStart, eventEnd;
     private Event evn;
 
@@ -81,13 +84,12 @@ public class ModifyActivity extends AppCompatActivity {
             Event tmp = Event.eventsList.get(i);
             if (tmp.getId().equals(newEvent.getId())){
                 Event.eventsList.set(i,newEvent);
-                Log.e("Response", "EVENT " + Event.eventsList.get(i).toString());
                 break;
             }
         }
 
-        // PUT
-        EventTransiant evn = new EventTransiant(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
+        // Send PUT request
+        EventTransient evn = new EventTransient(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
         evn.sendPUT();
 
         finish();

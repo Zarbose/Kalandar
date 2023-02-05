@@ -12,6 +12,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
+/** Represents an event used inside the app
+ * @author Simon and Tanguy
+ */
 public class Event
 {
     public static ArrayList<Event> eventsList = new ArrayList<>();
@@ -76,8 +79,8 @@ public class Event
         return jsonObject.toString();
     }
 
-    public EventTransiant toEventTransient(){
-        return new EventTransiant(this.id,this.desc,this.start,this.end);
+    public EventTransient toEventTransient(){
+        return new EventTransient(this.id,this.desc,this.start,this.end);
     }
 
     public String getId() {

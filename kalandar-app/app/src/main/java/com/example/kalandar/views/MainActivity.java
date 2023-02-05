@@ -28,6 +28,9 @@ import com.example.kalandar.requests.RequestsListener;
 import com.example.kalandar.requests.ThreadManager;
 import com.owlike.genson.Genson;
 
+/** Represents the home page
+ * @author Simon and Tanguy
+ */
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, RequestsListener
 {
     private TextView monthYearText;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     {
         super.onCreate(savedInstanceState);
 
+        // Send GET request
         RequestsHttp request = new RequestsHttp("GET_ALL");
         this.th = new ThreadManager(request,this);
 

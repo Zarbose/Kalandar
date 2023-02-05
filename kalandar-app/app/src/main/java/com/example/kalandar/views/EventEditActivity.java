@@ -10,7 +10,7 @@ import android.widget.TimePicker;
 
 import com.example.kalandar.R;
 import com.example.kalandar.model.Event;
-import com.example.kalandar.model.EventTransiant;
+import com.example.kalandar.model.EventTransient;
 import com.example.kalandar.utils.CalendarUtils;
 import com.example.kalandar.utils.Converter;
 
@@ -18,6 +18,9 @@ import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.Date;
 
+/** Represents the add of an event
+ * @author Simon and Tanguy
+ */
 public class EventEditActivity extends AppCompatActivity
 {
     private EditText eventNameET;
@@ -59,7 +62,8 @@ public class EventEditActivity extends AppCompatActivity
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate, time,start,end);
         Event.eventsList.add(newEvent);
 
-        EventTransiant evn = new EventTransiant(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
+        // Send POST request
+        EventTransient evn = new EventTransient(newEvent.getId(),newEvent.getDesc(),newEvent.getStart(),newEvent.getEnd());
         evn.sendPOST();
 
         finish();

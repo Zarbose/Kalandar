@@ -14,6 +14,9 @@ import com.example.kalandar.views.CalendarViewHolder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/** Represents the display way of the calendar grid
+ * @author Simon and Tanguy
+ */
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
     private final ArrayList<LocalDate> days;

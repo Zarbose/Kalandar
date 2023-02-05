@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import static com.example.kalandar.utils.CalendarUtils.daysInWeekArray;
 import static com.example.kalandar.utils.CalendarUtils.monthYearFromDate;
 
-import com.example.kalandar.model.EventTransiant;
+import com.example.kalandar.model.EventTransient;
 import com.example.kalandar.requests.RequestsListener;
 import com.example.kalandar.utils.CalendarAdapter;
 import com.example.kalandar.utils.CalendarUtils;
@@ -27,6 +27,9 @@ import com.example.kalandar.model.Event;
 import com.example.kalandar.R;
 import com.example.kalandar.utils.EventAdapter;
 
+/** Represents the week view
+ * @author Simon and Tanguy
+ */
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, RequestsListener
 {
     private TextView monthYearText;
@@ -62,7 +65,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         String title = item.getTitle().toString();
-                        EventTransiant evnT = evn.toEventTransient();
+                        EventTransient evnT = evn.toEventTransient();
                         if (title.equals("Modify")){
                             Intent intent = new Intent(WeekViewActivity.this, ModifyActivity.class);
                             intent.putExtra("event",evn.toString());

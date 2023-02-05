@@ -13,15 +13,17 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class EventTransiant
+/** Represents an event used inside the api
+ * @author Simon and Tanguy
+ */
+public class EventTransient
 {
-
     private String id;
     private String desc;
     private Date start;
     private Date end;
 
-    public EventTransiant() {
+    public EventTransient() {
         super();
         this.id=null;
         this.desc=null;
@@ -29,16 +31,16 @@ public class EventTransiant
         this.end=null;
     }
 
-    public EventTransiant(String id, String desc, Date start, Date end) {
+    public EventTransient(String id, String desc, Date start, Date end) {
         this.id=id;
         this.desc=desc;
         this.start = start;
         this.end=end;
     }
+
     public String getId() {
         return id;
     }
-
 
     @NonNull
     public String toString(){

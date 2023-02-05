@@ -10,6 +10,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/** Represents the requests used by the app
+ * @author Simon and Tanguy
+ */
 public class RequestsHttp extends Activity{
 
     private static final String uri = "http://10.0.2.2:8080/kalandar_api_war/rest/rdv";
@@ -59,6 +62,9 @@ public class RequestsHttp extends Activity{
         return id;
     }
 
+    /**
+     * Get all the events from the api
+     */
     public void requestGetAll(){
         URL url;
         HttpURLConnection urlConnection = null;
@@ -78,6 +84,9 @@ public class RequestsHttp extends Activity{
         }
     }
 
+    /**
+     * Add a new event to the api
+     */
     public void requestPost(){
         URL url;
         HttpURLConnection urlConnection = null;
@@ -106,6 +115,9 @@ public class RequestsHttp extends Activity{
         }
     }
 
+    /**
+     * Delete an event
+     */
     public void requestDelete(){
         URL url;
         HttpURLConnection urlConnection = null;
@@ -128,6 +140,9 @@ public class RequestsHttp extends Activity{
         }
     }
 
+    /**
+     * Update an event
+     */
     public void requestPut(){
         URL url;
         HttpURLConnection urlConnection = null;

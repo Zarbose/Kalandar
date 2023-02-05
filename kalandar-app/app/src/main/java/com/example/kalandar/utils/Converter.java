@@ -15,7 +15,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+/** A converter
+ * @author Simon and Tanguy
+ */
 public class Converter {
+    /**
+     * @param s a string in json format
+     * @return object of type Event
+     */
     public static Event strToEvent(String s) throws JSONException, ParseException {
         JSONObject json = new JSONObject(s);
 
@@ -30,6 +37,10 @@ public class Converter {
         return evn;
     }
 
+    /**
+     * @param toConvert an array of String in json format
+     * @return an array of Event
+     */
     public static ArrayList<Event> arrToEvent(ArrayList<String> toConvert) throws JSONException, ParseException {
         ArrayList<Event> list = new ArrayList<>();
         for (int i = 0; i < toConvert.size(); i++) {
@@ -40,16 +51,19 @@ public class Converter {
         return list;
     }
 
+    /**
+     * @param d a Date object
+     * @return the Localtime extract from the Date
+     */
     public static LocalTime dateToLocalTime(Date d){
         LocalTime time = d.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
         return time;
     }
 
     /**
-     *
      * @param s an hour
      * @param d a date
-     * @return a Date object
+     * @return a date resulting from the two parameters
      */
     public static Date stringToDate(String s, LocalDate d) throws ParseException {
         String str_date = CalendarUtils.formattedDate(d); // dd MMMM yyyy   s = H:m

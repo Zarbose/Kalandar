@@ -12,6 +12,9 @@ import com.example.kalandar.utils.CalendarAdapter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/** Represents the display way of the calendar when you click on a day
+ * @author Simon and Tanguy
+ */
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     private final ArrayList<LocalDate> days;
